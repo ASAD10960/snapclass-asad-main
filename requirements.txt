@@ -18,3 +18,8 @@ bcrypt
 segno
 pillow
 
+librosa
+resemblyzer
+
+
+
