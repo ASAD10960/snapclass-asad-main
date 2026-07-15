@@ -19,7 +19,7 @@ def get_voice_embedding(audio_bytes):
         embedding = encoder.embed_utterance(wav)
         return embedding.tolist()
     except Exception as e:
-        st.error('Voice recog error')
+        st.error(f"Voice recognition error: {e}")
         return None
     
 

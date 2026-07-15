@@ -67,10 +67,16 @@ def student_dashboard():
 
         stats = stats_map.get(sid,{"total":0, "attended": 0} )
         def unenroll_button():
-                if st.button("Unenroll from tihs course", type='tertiary', width='stretch', icon=':material/delete_forever:'):
-                    unenroll_student_to_subject(student_id, sid)
-                    st.toast(f'Unenrolled from {sub['name']} successfully!')
-                    st.rerun()
+            if st.button(
+            "Unenroll from this course",
+             key=f"unenroll_{sid}",
+             type="tertiary",
+             width="stretch",
+             icon=":material/delete_forever:"
+           ):
+             unenroll_student_to_subject(student_id, sid)
+             st.toast(f"Unenrolled from {sub['name']} successfully!")
+             st.rerun()
 
         with cols[i % 2]:
 
@@ -133,7 +139,7 @@ def student_screen():
                         st.session_state.is_logged_in = True
                         st.session_state.user_role = 'student'
                         st.session_state.student_data = student
-                        st.toast(f'Welcome Back {student['name']}')
+                        st.toast(f"Welcome Back {student['name']}")
                         time.sleep(1)
                         st.rerun()
                 else:
@@ -164,10 +170,27 @@ def student_screen():
                             face_emb = encodings[0].tolist()
 
                             voice_emb = None
-                            if audio_data:
-                                voice_emb = get_voice_embedding(audio_data.read())
 
-                            response_data = create_student(new_name, face_embedding=face_emb, voice_embedding=voice_emb)
+                            if audio_data:
+                               audio_bytes = audio_data.read()
+
+                               st.write("Audio exists:", audio_data is not None)
+                               st.write("Audio bytes:", len(audio_bytes))
+
+                               voice_emb = get_voice_embedding(audio_bytes)
+
+                               st.write("Voice embedding generated:", voice_emb is not None)
+
+                               if voice_emb is not None:
+                                   st.write("Embedding length:", len(voice_emb))
+                            else:
+                                st.warning("No audio recorded!")
+
+                            response_data = create_student(
+                                new_name,
+                                face_embedding=face_emb,
+                                voice_embedding=voice_emb
+                            )
 
                             if response_data:
                                 train_classifier()

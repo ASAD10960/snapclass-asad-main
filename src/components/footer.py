@@ -2,7 +2,7 @@ import streamlit as st
 
 
 def footer_home():
-    logo_url = "https://i.ibb.co/4r5X1FY/apnacollege.png"
+    logo_url = "https://imgs.search.brave.com/1eqLJPTQkW2lcKB77iORNch-JTRNajTzbCR4mweQYiY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2YwLzVm/LzA0L2YwNWYwNGNi/MDY0NjAzM2RjZWRh/OWMwYjRjNDA3OWI1/LmpwZw"
     
     st.markdown(f"""
         <div style="margin-top:2rem; display:flex; gap:6px; justify-content:center; items-align:center">
@@ -14,7 +14,7 @@ def footer_home():
 
 
 def footer_dashboard():
-    logo_url = "https://i.ibb.co/4r5X1FY/apnacollege.png"
+    logo_url = "https://imgs.search.brave.com/1eqLJPTQkW2lcKB77iORNch-JTRNajTzbCR4mweQYiY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2YwLzVm/LzA0L2YwNWYwNGNi/MDY0NjAzM2RjZWRh/OWMwYjRjNDA3OWI1/LmpwZw"
     
     st.markdown(f"""
         <div style="margin-top:2rem; display:flex; gap:6px; justify-content:center; items-align:center">
